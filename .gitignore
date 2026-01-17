@@ -30,6 +30,7 @@ album_collector_backend/*.log
 album_collector_backend/.DS_Store
 album_collector_backend/dist/
 album_collector_backend/build/
+album_collector_backend/certificates/
 
 .flutter-plugins
 .flutter-plugins-dependencies
