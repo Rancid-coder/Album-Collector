@@ -25,6 +25,11 @@ album_collector_frontend/**/*.js
 album_collector_frontend/**/*.js_
 album_collector_frontend/**/*.js.deps
 album_collector_frontend/**/*.js.map
+album_collector_backend/node_modules/
+album_collector_backend/*.log
+album_collector_backend/.DS_Store
+album_collector_backend/dist/
+album_collector_backend/build/
 
 .flutter-plugins
 .flutter-plugins-dependencies
