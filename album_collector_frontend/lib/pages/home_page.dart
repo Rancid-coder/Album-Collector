@@ -1,3 +1,4 @@
+import 'package:album_collector_frontend/pages/scan_page.dart';
 import 'package:flutter/material.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -27,6 +28,14 @@ class _MyHomePageState extends State<MyHomePage> {
               style: Theme.of(context).textTheme.displayMedium,
               textAlign: TextAlign.center,
             ),
+            TextButton(
+                child: const Text("Scan"),
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const ScanPage()));
+                })
           ],
         ),
       ),

@@ -26,14 +26,14 @@ final theme = ThemeData(
       letterSpacing: 1.5,
     ),
   ),
-  cardTheme: CardTheme(
+  cardTheme: CardThemeData(
     color: Colors.grey[900],
     elevation: 8,
-    shadowColor: Colors.orange[900]!.withOpacity(0.5),
+    shadowColor: Colors.orange[900]!.withValues(alpha: 0.5),
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(16),
       side: BorderSide(
-        color: Colors.orange[700]!.withOpacity(0.2),
+        color: Colors.orange[700]!.withValues(alpha: 0.2),
         width: 1,
       ),
     ),
@@ -44,7 +44,7 @@ final theme = ThemeData(
       foregroundColor: Colors.white,
       padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
       elevation: 6,
-      shadowColor: Colors.orange[900]!.withOpacity(0.6),
+      shadowColor: Colors.orange[900]!.withValues(alpha: 0.6),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12),
       ),
@@ -117,7 +117,7 @@ final theme = ThemeData(
     ),
   ),
   dividerTheme: DividerThemeData(
-    color: Colors.orange[900]!.withOpacity(0.3),
+    color: Colors.orange[900]!.withValues(alpha: 0.3),
     thickness: 1,
     space: 1,
   ),
