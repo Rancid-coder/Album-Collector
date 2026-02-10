@@ -10,31 +10,7 @@ class ScanPage extends StatefulWidget {
 }
 
 class _ScanPageState extends State<ScanPage> {
-  Barcode? _barcode;
   bool _isProcessing = false;
-  final MobileScannerController _controller = MobileScannerController();
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
-  Widget _barcodePreview(Barcode? value) {
-    if (value == null) {
-      return const Text(
-        'Scan Bar Code!',
-        overflow: TextOverflow.fade,
-        style: TextStyle(color: Colors.white),
-      );
-    }
-
-    return Text(
-      value.displayValue ?? 'No display value.',
-      overflow: TextOverflow.fade,
-      style: const TextStyle(color: Colors.white),
-    );
-  }
 
   void _handleBarcode(BarcodeCapture barcodes) async {
     if (_isProcessing) return;
@@ -42,7 +18,6 @@ class _ScanPageState extends State<ScanPage> {
 
     setState(() {
       _isProcessing = true;
-      _barcode = barcodes.barcodes.firstOrNull;
     });
 
     final code = barcodes.barcodes.first.rawValue ?? "";
@@ -59,7 +34,6 @@ class _ScanPageState extends State<ScanPage> {
         child: Stack(
           children: [
             MobileScanner(
-              controller: _controller,
               onDetect: _handleBarcode,
             ),
             Align(
@@ -68,10 +42,16 @@ class _ScanPageState extends State<ScanPage> {
                 alignment: Alignment.bottomCenter,
                 height: 100,
                 color: const Color.fromRGBO(0, 0, 0, 0.4),
-                child: Row(
+                child: const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Expanded(child: Center(child: _barcodePreview(_barcode))),
+                    Expanded(
+                        child: Center(
+                            child: Text(
+                      'Scan Bar Code!',
+                      overflow: TextOverflow.fade,
+                      style: TextStyle(color: Colors.white),
+                    ))),
                   ],
                 ),
               ),
