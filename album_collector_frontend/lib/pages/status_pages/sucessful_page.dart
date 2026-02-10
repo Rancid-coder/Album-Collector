@@ -1,9 +1,16 @@
 import 'package:album_collector_frontend/pages/scan_page.dart';
 import 'package:flutter/material.dart';
 
-class ErrorPage extends StatelessWidget {
-  const ErrorPage({super.key});
+class SucessfulPage extends StatefulWidget {
+  final String data;
 
+  const SucessfulPage(this.data, {super.key});
+
+  @override
+  State<SucessfulPage> createState() => _SucessfulPageState();
+}
+
+class _SucessfulPageState extends State<SucessfulPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -13,14 +20,14 @@ class ErrorPage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const Icon(
-            Icons.error_outline_rounded,
-            color: Colors.red,
+            Icons.verified_outlined,
+            color: Colors.green,
             size: 64,
           ),
           const SizedBox(
             height: 10,
           ),
-          const Text("Data not found for the scanable code"),
+          Text('Album Found : ${widget.data}'),
           TextButton(
               child: const Text("Retry Scan"),
               onPressed: () {

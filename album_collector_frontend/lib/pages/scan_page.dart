@@ -11,11 +11,19 @@ class ScanPage extends StatefulWidget {
 
 class _ScanPageState extends State<ScanPage> {
   Barcode? _barcode;
+  bool _isProcessing = false;
+  final MobileScannerController _controller = MobileScannerController();
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 
   Widget _barcodePreview(Barcode? value) {
     if (value == null) {
       return const Text(
-        'Scan something!',
+        'Scan Bar Code!',
         overflow: TextOverflow.fade,
         style: TextStyle(color: Colors.white),
       );
@@ -28,14 +36,18 @@ class _ScanPageState extends State<ScanPage> {
     );
   }
 
-  void _handleBarcode(BarcodeCapture barcodes) {
-    if (mounted) {
-      setState(() {
-        _barcode = barcodes.barcodes.firstOrNull;
-      });
-      BarcodeIdentifier().codeIdentifier(
-          barcodes.barcodes.first.rawValue ?? "no scanable code was found");
-    }
+  void _handleBarcode(BarcodeCapture barcodes) async {
+    if (_isProcessing) return;
+    if (!mounted) return;
+
+    setState(() {
+      _isProcessing = true;
+      _barcode = barcodes.barcodes.firstOrNull;
+    });
+
+    final code = barcodes.barcodes.first.rawValue ?? "";
+
+    await BarcodeIdentifier().codeIdentifier(code, context);
   }
 
   @override
@@ -46,7 +58,10 @@ class _ScanPageState extends State<ScanPage> {
       body: SafeArea(
         child: Stack(
           children: [
-            MobileScanner(onDetect: _handleBarcode),
+            MobileScanner(
+              controller: _controller,
+              onDetect: _handleBarcode,
+            ),
             Align(
               alignment: Alignment.bottomCenter,
               child: Container(
@@ -61,6 +76,23 @@ class _ScanPageState extends State<ScanPage> {
                 ),
               ),
             ),
+            if (_isProcessing)
+              Container(
+                color: Colors.black87,
+                child: const Center(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      CircularProgressIndicator(color: Colors.white),
+                      SizedBox(height: 16),
+                      Text(
+                        'Processing...',
+                        style: TextStyle(color: Colors.white, fontSize: 18),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
           ],
         ),
       ),
