@@ -48,7 +48,7 @@ class _ScanPageState extends State<ScanPage> {
                     Expanded(
                         child: Center(
                             child: Text(
-                      'Scan Bar Code!',
+                      'Scan Bar Code',
                       overflow: TextOverflow.fade,
                       style: TextStyle(color: Colors.white),
                     ))),
