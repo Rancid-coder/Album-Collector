@@ -22,6 +22,8 @@ class _ScanPageState extends State<ScanPage> {
 
     final code = barcodes.barcodes.first.rawValue ?? "";
 
+    debugPrint("Scanned code content: $code");
+
     await BarcodeIdentifier().codeIdentifier(code, context);
   }
 

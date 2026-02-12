@@ -28,7 +28,7 @@ class _SucessfulPageState extends State<SucessfulPage> {
             height: 10,
           ),
           Text(
-            'Album Found : ${widget.data} \n AVISO ISTO É TEXTO ESTÁTICO (por agora)',
+            'Album Found : ${widget.data}',
             textAlign: TextAlign.center,
           ),
           TextButton(

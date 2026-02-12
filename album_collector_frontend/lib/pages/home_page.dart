@@ -24,12 +24,12 @@ class _MyHomePageState extends State<MyHomePage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
-              "Hello welcome to Album Collector's home page.",
+              "Hello welcome to album collector \n 'We remember so you don't forget'",
               style: Theme.of(context).textTheme.displayMedium,
               textAlign: TextAlign.center,
             ),
             TextButton(
-                child: const Text("Scan"),
+                child: const Text("Start Scaning"),
                 onPressed: () {
                   Navigator.push(
                       context,
