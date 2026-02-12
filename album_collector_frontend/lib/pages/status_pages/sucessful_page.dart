@@ -1,16 +1,32 @@
+import 'package:album_collector_frontend/models/model_final_response.dart';
 import 'package:album_collector_frontend/pages/scan_page.dart';
 import 'package:flutter/material.dart';
 
 class SucessfulPage extends StatefulWidget {
-  final String data;
+  final ModelFinalResponse album;
 
-  const SucessfulPage(this.data, {super.key});
+  const SucessfulPage({super.key, required this.album});
 
   @override
   State<SucessfulPage> createState() => _SucessfulPageState();
 }
 
 class _SucessfulPageState extends State<SucessfulPage> {
+  String get artistsName {
+    String result = '';
+    for (var a in widget.album.releases[0].artistCredit) {
+      result += a.name;
+      if (a.joinphrase != null && a.joinphrase!.isNotEmpty) {
+        result += a.joinphrase!;
+      }
+    }
+    return result;
+  }
+
+  String get albumTitle {
+    return widget.album.releases[0].title;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,7 +44,7 @@ class _SucessfulPageState extends State<SucessfulPage> {
             height: 10,
           ),
           Text(
-            'Album Found : ${widget.data}',
+            'Album Found : $albumTitle by $artistsName',
             textAlign: TextAlign.center,
           ),
           TextButton(

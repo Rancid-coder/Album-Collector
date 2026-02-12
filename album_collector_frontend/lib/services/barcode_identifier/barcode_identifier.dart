@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:album_collector_frontend/models/model_final_response.dart';
 import 'package:album_collector_frontend/pages/status_pages/error_page.dart';
 import 'package:album_collector_frontend/pages/status_pages/sucessful_page.dart';
 import 'package:flutter/material.dart';
@@ -19,13 +20,14 @@ class BarcodeIdentifier {
         if (response.statusCode == 200) {
           final data = jsonDecode(response.body);
 
-          if (data["count"] == 0) {
+          final album = ModelFinalResponse.fromJson(data);
+
+          if (album.count == 0) {
             navigator.pushReplacement(
                 MaterialPageRoute(builder: (context) => const ErrorPage()));
           } else {
             navigator.pushReplacement(MaterialPageRoute(
-                builder: (context) =>
-                    const SucessfulPage("David Allen Coe - Longhair Redneck")));
+                builder: (context) => SucessfulPage(album: album)));
           }
           break;
         }
