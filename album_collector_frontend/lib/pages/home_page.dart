@@ -1,3 +1,4 @@
+import 'package:album_collector_frontend/pages/library_page.dart';
 import 'package:album_collector_frontend/pages/scan_page.dart';
 import 'package:flutter/material.dart';
 
@@ -28,6 +29,9 @@ class _MyHomePageState extends State<MyHomePage> {
               style: Theme.of(context).textTheme.displayMedium,
               textAlign: TextAlign.center,
             ),
+            const SizedBox(
+              height: 2,
+            ),
             TextButton(
                 child: const Text("Start Scaning"),
                 onPressed: () {
@@ -35,7 +39,18 @@ class _MyHomePageState extends State<MyHomePage> {
                       context,
                       MaterialPageRoute(
                           builder: (context) => const ScanPage()));
-                })
+                }),
+            const SizedBox(
+              height: 2,
+            ),
+            TextButton(
+                child: const Text("My Library"),
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const LibraryPage()));
+                }),
           ],
         ),
       ),

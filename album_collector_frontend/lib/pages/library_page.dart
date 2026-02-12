@@ -10,8 +10,11 @@ class LibraryPage extends StatefulWidget {
 class _LibraryPageState extends State<LibraryPage> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Column(
+    return Scaffold(
+      appBar: AppBar(
+          backgroundColor: Theme.of(context).colorScheme.primary,
+          title: const Text('Library')),
+      body: const Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
