@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Abum Collector',
       theme: theme,
-      home: const MyHomePage(title: 'Abum Collector Home Page'),
+      home: const MyHomePage(title: 'Abum Collector'),
     );
   }
 }

@@ -27,7 +27,10 @@ class _SucessfulPageState extends State<SucessfulPage> {
           const SizedBox(
             height: 10,
           ),
-          Text('Album Found : ${widget.data}'),
+          Text(
+            'Album Found : ${widget.data} \n AVISO ISTO É TEXTO ESTÁTICO (por agora)',
+            textAlign: TextAlign.center,
+          ),
           TextButton(
               child: const Text("Retry Scan"),
               onPressed: () {
