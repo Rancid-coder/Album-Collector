@@ -57,10 +57,10 @@ class _SucessfulPageState extends State<SucessfulPage> {
                         builder: (context) => const LibraryPage()));
               }),
           const SizedBox(
-            height: 10,
+            height: 5,
           ),
           TextButton(
-              child: const Text("Retry Scan"),
+              child: const Text("Scan another code"),
               onPressed: () {
                 Navigator.pushReplacement(context,
                     MaterialPageRoute(builder: (context) => const ScanPage()));

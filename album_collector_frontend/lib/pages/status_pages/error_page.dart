@@ -20,7 +20,10 @@ class ErrorPage extends StatelessWidget {
           const SizedBox(
             height: 10,
           ),
-          const Text("Data not found for the scanable code"),
+          const Text(
+            "Data not found for the scanable code, we recommend you retry the scan or scan another barcode related to the same album",
+            textAlign: TextAlign.center,
+          ),
           TextButton(
               child: const Text("Retry Scan"),
               onPressed: () {

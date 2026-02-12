@@ -12,9 +12,12 @@ class _LibraryPageState extends State<LibraryPage> {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-              'This is an upcoming feature. You will be able to see all your albums here.')
+            'This is an upcoming feature. You will be able to see all your albums here.',
+            textAlign: TextAlign.center,
+          )
         ],
       ),
     );
