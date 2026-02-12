@@ -1,4 +1,5 @@
 import 'package:album_collector_frontend/models/model_final_response.dart';
+import 'package:album_collector_frontend/pages/library_page.dart';
 import 'package:album_collector_frontend/pages/scan_page.dart';
 import 'package:flutter/material.dart';
 
@@ -44,8 +45,19 @@ class _SucessfulPageState extends State<SucessfulPage> {
             height: 10,
           ),
           Text(
-            'Album Found : $albumTitle by $artistsName',
+            'Album Scanned: $albumTitle by $artistsName',
             textAlign: TextAlign.center,
+          ),
+          TextButton(
+              child: const Text("Add To Library"),
+              onPressed: () {
+                Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const LibraryPage()));
+              }),
+          const SizedBox(
+            height: 10,
           ),
           TextButton(
               child: const Text("Retry Scan"),
